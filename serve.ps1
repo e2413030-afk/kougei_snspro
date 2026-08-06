@@ -1,8 +1,10 @@
+param([int]$Port = 5173)
+
 $root = $PSScriptRoot
 $listener = New-Object System.Net.HttpListener
-$listener.Prefixes.Add("http://localhost:8080/")
+$listener.Prefixes.Add("http://localhost:$Port/")
 $listener.Start()
-Write-Host "Serving $root on http://localhost:8080/"
+Write-Host "Serving $root on http://localhost:$Port/"
 
 $mime = @{
   ".html" = "text/html; charset=utf-8"
@@ -12,6 +14,8 @@ $mime = @{
   ".png"  = "image/png"
   ".jpg"  = "image/jpeg"
   ".ico"  = "image/x-icon"
+  ".webp" = "image/webp"
+  ".woff2" = "font/woff2"
 }
 
 while ($listener.IsListening) {

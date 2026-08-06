@@ -1,57 +1,31 @@
-// Header background toggle on scroll
+// JSが動く環境でのみフェードインを有効にする。
+// このクラスが付くまで .reveal は非表示にならないため、JS無効時も本文は読める。
+document.documentElement.classList.add('js');
+
+// ヘッダー: スクロール時のみ下境界を出す
 const header = document.getElementById('siteHeader');
 const onScroll = () => {
-  if (window.scrollY > 12) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
+  header.classList.toggle('is-scrolled', window.scrollY > 4);
 };
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-// Theme toggle (light / dark), persisted in localStorage
-const root = document.documentElement;
-const themeToggle = document.getElementById('themeToggle');
-const STORAGE_KEY = 'sns-project-theme';
-
-const systemPrefersDark = () =>
-  window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-const applyTheme = (theme) => {
-  root.setAttribute('data-theme', theme);
-  themeToggle.setAttribute('aria-pressed', String(theme === 'light'));
-  themeToggle.setAttribute(
-    'aria-label',
-    theme === 'dark' ? 'ライトモードに切り替え' : 'ダークモードに切り替え'
-  );
-};
-
-const storedTheme = localStorage.getItem(STORAGE_KEY);
-applyTheme(storedTheme || (systemPrefersDark() ? 'dark' : 'light'));
-
-themeToggle.addEventListener('click', () => {
-  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-  applyTheme(next);
-  localStorage.setItem(STORAGE_KEY, next);
-});
-
-// Reveal-on-scroll
+// スクロール時のフェードイン（このページで唯一の動き）
 const revealEls = document.querySelectorAll('.reveal');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-if ('IntersectionObserver' in window) {
+if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+  revealEls.forEach((el) => el.classList.add('is-visible'));
+} else {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
       });
     },
-    { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
   revealEls.forEach((el) => observer.observe(el));
-} else {
-  revealEls.forEach((el) => el.classList.add('is-visible'));
 }
