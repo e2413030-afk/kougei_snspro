@@ -1,272 +1,312 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SNS広報プロジェクト 新メンバー募集 | 厚木キャンパス</title>
-<meta name="description" content="厚木キャンパスの学生を対象に、大学公式SNS運営プロジェクトの新メンバーを募集しています。企画から撮影、編集まで、未経験から挑戦できます。">
+<title>SNSプロジェクト メンバー募集 | 東京工芸大学 厚木キャンパス</title>
+<meta name="description" content="東京工芸大学 厚木キャンパスの学生を対象に、大学公式SNSプロジェクトの新メンバーを募集しています。企画・撮影・編集まで、未経験から参加できます。">
+<meta name="color-scheme" content="light dark">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- TODO: 団体名は仮称です。正式名称が決まったら header / footer / title タグを差し替えてください -->
+<a href="#main" class="skip-link">本文へスキップ</a>
 
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
-    <a href="#hero" class="logo">SNS広報<span>PROJECT</span></a>
-    <a href="#entry" class="btn btn-small">エントリー</a>
+    <a href="#top" class="logo" aria-label="東京工芸大学 SNSプロジェクト">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">東京工芸大学 SNSプロジェクト</span>
+    </a>
+    <nav class="site-nav" aria-label="ページ内ナビゲーション">
+      <a href="#requirements">募集要項</a>
+      <a href="#activity">活動内容</a>
+      <a href="#apply">応募方法</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="header-actions">
+      <button type="button" id="themeToggle" class="theme-toggle" aria-pressed="false" aria-label="ライトモードに切り替え">
+        <svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v3M12 18.5v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2.5 12h3M18.5 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        <svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <a href="#apply" class="btn btn-accent btn-sm">エントリー</a>
+    </div>
   </div>
 </header>
 
-<main>
+<main id="main">
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="wrap hero-inner">
-      <p class="eyebrow reveal">厚木キャンパス SNS広報プロジェクト ― 新メンバー募集</p>
-      <h1 class="hero-title reveal">何かを本気でやった、と<br>言えるものはあるか。</h1>
+  <!-- Hero — 短く。何を募集していて、次に何を見ればいいかだけ -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="wrap">
+      <p class="tagline reveal">東京工芸大学 厚木キャンパス ／ 大学公式SNSプロジェクト</p>
+      <h1 class="hero-title reveal" id="hero-title">
+        大学公式SNSを運営する<br>新メンバーを募集します
+      </h1>
       <p class="hero-sub reveal">
-        大学公式SNSの企画・撮影・編集を、自分たちの手で。<br class="only-pc">
-        未経験からでも、ちゃんと形になる経験ができます。
+        企画・撮影・出演・編集まで、学生が主体で運営しています。未経験からの参加が中心です。
       </p>
+
       <div class="hero-actions reveal">
-        <a href="#entry" class="btn btn-primary">エントリーはこちら</a>
-        <a href="#intro" class="btn btn-ghost">まずは読んでみる</a>
+        <a href="#apply" class="btn btn-accent">エントリーする</a>
+        <a href="#requirements" class="btn btn-line">募集要項を見る</a>
       </div>
-      <p class="hero-note reveal">厚木キャンパスの学生対象 ・ 未経験歓迎</p>
-    </div>
-    <a href="#intro" class="scroll-cue" aria-label="スクロールして詳細を見る"><span></span></a>
-  </section>
 
-  <!-- Intro -->
-  <section class="section" id="intro">
-    <div class="wrap">
-      <p class="eyebrow reveal">01 — INTRO</p>
-      <h2 class="section-title reveal">サークルでもバイトでもない、もうひとつの選択肢</h2>
-      <div class="section-body reveal">
-        <p>就活が近づくと、「学生時代に力を入れたこと」を聞かれる。とっさに答えられる人は、実は多くない。授業に出て、バイトをして、なんとなく大学生活を過ごしていると、気づけば話せることがない、という状態になりがちです。</p>
-        <p>このプロジェクトは、その状態を変えるための場所です。大学公式のSNSを、実際に自分たちで企画し、撮影し、編集する。結果が数字として見える分、手応えも失敗もはっきりします。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section class="section alt" id="about">
-    <div class="wrap">
-      <p class="eyebrow reveal">02 — ABOUT</p>
-      <h2 class="section-title reveal">厚木キャンパスの学生が運営する、大学公式SNS</h2>
-      <div class="section-body reveal">
-        <p>厚木キャンパスの学生を対象に、大学公式SNSの運営メンバーを募集しています。企画立案から撮影、出演、編集まで、現在はメンバー全員で全工程を担当。将来的には、スキルや興味に応じた班制度への移行も検討しています。</p>
-        <p>今なら、企画から編集まで一通り経験できる分、身につくものも多いタイミングです。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Merits -->
-  <section class="section" id="merits">
-    <div class="wrap">
-      <p class="eyebrow reveal">03 — MERIT</p>
-      <h2 class="section-title reveal">参加して得られるもの</h2>
-      <div class="card-grid three">
-        <div class="card reveal">
-          <span class="card-num">01</span>
-          <h3>就活で話せる実績</h3>
-          <p>「学生時代に力を入れたこと」として、具体的な成果とプロセスを語れるようになります。企画から公開まで自分が関わった証拠が、SNS上にそのまま残ります。</p>
+      <!-- 必要情報を最上部で一目で -->
+      <dl class="facts reveal">
+        <div class="fact">
+          <dt>募集対象</dt>
+          <dd>厚木キャンパスの学生</dd>
         </div>
-        <div class="card reveal">
-          <span class="card-num">02</span>
-          <h3>実務に近いスキル</h3>
-          <p>マーケティングの考え方、動画制作、チームでプロジェクトを進める経験。授業だけでは身につきにくい、実践的なスキルが自然と身につきます。</p>
+        <div class="fact">
+          <dt>必要な経験</dt>
+          <dd>不問・未経験歓迎</dd>
         </div>
-        <div class="card reveal">
-          <span class="card-num">03</span>
-          <h3>学内のつながり</h3>
-          <p>学部や学年をまたいだメンバーと一緒に活動する中で、キャンパス内の人脈が自然に広がります。</p>
+        <div class="fact">
+          <dt>活動頻度</dt>
+          <dd>MTG 週1回 ／ 撮影 月1回</dd>
         </div>
+        <div class="fact">
+          <dt>応募締切</dt>
+          <dd>定員に達し次第</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 募集要項 — 最重要。ヒーロー直後に配置 -->
+  <section class="section" id="requirements" aria-labelledby="requirements-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="label">01</p>
+        <h2 class="section-title" id="requirements-title">募集要項</h2>
+      </div>
+
+      <dl class="spec reveal">
+        <div class="spec-row">
+          <dt>募集対象</dt>
+          <dd>東京工芸大学 厚木キャンパスの学生（学部・学年不問）</dd>
+        </div>
+        <div class="spec-row">
+          <dt>募集人数</dt>
+          <dd>若干名<span class="spec-note">定員に達し次第、予告なく募集を終了します</span></dd>
+        </div>
+        <div class="spec-row">
+          <dt>活動内容</dt>
+          <dd>大学公式SNSの企画立案・撮影・出演・編集<span class="spec-note">現在はメンバー全員で全工程を担当しています</span></dd>
+        </div>
+        <div class="spec-row">
+          <dt>ミーティング</dt>
+          <dd>週1回・1時間<span class="spec-note">月曜21時から（オンラインまたは対面）</span></dd>
+        </div>
+        <div class="spec-row">
+          <dt>撮影</dt>
+          <dd>月1回程度<span class="spec-note">曜日は固定せず、メンバーの予定に合わせて調整します</span></dd>
+        </div>
+        <div class="spec-row">
+          <dt>制作の目安</dt>
+          <dd>2週間に1本<span class="spec-note">1日1時間の作業を3日ほどで完成するボリュームです</span></dd>
+        </div>
+        <div class="spec-row">
+          <dt>必要な経験</dt>
+          <dd>不問（未経験歓迎）<span class="spec-note">現メンバーの多くが未経験からのスタートです</span></dd>
+        </div>
+        <div class="spec-row">
+          <dt>歓迎スキル</dt>
+          <dd>
+            <ul class="chips">
+              <li>カメラ</li>
+              <li>動画編集</li>
+              <li>出演</li>
+              <li>ディレクション</li>
+              <li>論理的思考力</li>
+            </ul>
+            <span class="spec-note">いずれも必須ではありません</span>
+          </dd>
+        </div>
+        <div class="spec-row">
+          <dt>選考方法</dt>
+          <dd>カジュアル面談<span class="spec-note">定員の都合上、応募者全員が参加できるわけではありません</span></dd>
+        </div>
+        <div class="spec-row">
+          <dt>応募方法</dt>
+          <dd><a href="#apply" class="inline-link">ページ下部のエントリーフォームから</a></dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 活動内容 -->
+  <section class="section alt" id="activity" aria-labelledby="activity-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="label">02</p>
+        <h2 class="section-title" id="activity-title">活動内容</h2>
+      </div>
+
+      <p class="section-lead reveal">1本の動画を、企画から公開まで通して担当します。</p>
+
+      <ol class="steps reveal" aria-label="制作の流れ">
+        <li><span class="step-n">01</span><span class="step-t">企画</span><span class="step-d">何を発信するかを決める</span></li>
+        <li><span class="step-n">02</span><span class="step-t">撮影</span><span class="step-d">キャンパス内外で撮る</span></li>
+        <li><span class="step-n">03</span><span class="step-t">出演</span><span class="step-d">メンバーが出ることも</span></li>
+        <li><span class="step-n">04</span><span class="step-t">編集</span><span class="step-d">カット・テロップ・音</span></li>
+        <li><span class="step-n">05</span><span class="step-t">公開</span><span class="step-d">数字を見て次に活かす</span></li>
+      </ol>
+
+      <p class="fineprint reveal">特定の役割に固定されないため、一通り経験しながら得意分野を見つけられます。将来的にはスキルに応じた班制度への移行も検討しています。</p>
+    </div>
+  </section>
+
+  <!-- 応募方法 -->
+  <section class="section" id="apply" aria-labelledby="apply-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="label">03</p>
+        <h2 class="section-title" id="apply-title">応募方法</h2>
+      </div>
+
+      <div class="apply-grid">
+        <ol class="flow reveal">
+          <li>
+            <span class="flow-n">1</span>
+            <div>
+              <h3>エントリーフォームを送信</h3>
+              <p>所要 3分程度。学部・学年と、簡単な志望理由を記入します。</p>
+            </div>
+          </li>
+          <li>
+            <span class="flow-n">2</span>
+            <div>
+              <h3>カジュアル面談</h3>
+              <p>活動内容のすり合わせと、簡単な質問をさせてもらいます。</p>
+            </div>
+          </li>
+          <li>
+            <span class="flow-n">3</span>
+            <div>
+              <h3>結果のご連絡</h3>
+              <p>数日以内に、参加可否をお伝えします。</p>
+            </div>
+          </li>
+        </ol>
+
+        <!-- TODO: href="#" を実際の応募フォーム（Googleフォーム等）のURLに差し替えてください -->
+        <aside class="apply-cta reveal">
+          <p class="apply-cta-label">ENTRY</p>
+          <p class="apply-cta-lead">定員に達し次第、<br>予告なく締め切ります。</p>
+          <a href="#" class="btn btn-accent btn-block">エントリーフォームへ</a>
+          <p class="apply-cta-note">所要3分 ／ 厚木キャンパスの学生対象</p>
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- Work -->
-  <section class="section alt" id="work">
+  <!-- 参加して得られること — 短く3行 -->
+  <section class="section alt" id="merits" aria-labelledby="merits-title">
     <div class="wrap">
-      <p class="eyebrow reveal">04 — WORK</p>
-      <h2 class="section-title reveal">何をやるのか</h2>
-      <div class="section-body reveal">
-        <p>現在は、企画立案・撮影・出演・編集の全工程を、メンバー全員で分担しながら担当しています。特定の役割に固定されないので、いろいろな工程に関わりながら、自分の得意や興味を見つけていけます。（将来的には、スキルに応じた班制度への移行も検討中です）</p>
+      <div class="section-head reveal">
+        <p class="label">04</p>
+        <h2 class="section-title" id="merits-title">参加して得られること</h2>
       </div>
+      <ul class="gains reveal">
+        <li><strong>就活で話せる実績</strong>企画から公開まで関わった成果が、SNS上にそのまま残ります。</li>
+        <li><strong>実務に近いスキル</strong>マーケティングの考え方、動画制作、チームでの進め方。</li>
+        <li><strong>学内のつながり</strong>学部・学年をまたいだメンバーと活動します。</li>
+      </ul>
     </div>
   </section>
 
-  <!-- Schedule -->
-  <section class="section" id="schedule">
+  <!-- 求める人物像 — 箇条書きで簡潔に -->
+  <section class="section" id="persona" aria-labelledby="persona-title">
     <div class="wrap">
-      <p class="eyebrow reveal">05 — SCHEDULE</p>
-      <h2 class="section-title reveal">稼働のイメージ</h2>
-      <p class="section-lead reveal">「思っていたより無理なく続けられる」という声が多い内容です。</p>
-      <div class="card-grid three">
-        <div class="card reveal">
-          <span class="card-tag">MTG</span>
-          <p class="card-highlight">週1回・1時間</p>
-          <p>月曜21時から、オンラインまたは対面で実施しています。</p>
-        </div>
-        <div class="card reveal">
-          <span class="card-tag">撮影</span>
-          <p class="card-highlight">月1回程度</p>
-          <p>曜日は固定せず、メンバーの予定に合わせて柔軟に調整しています。</p>
-        </div>
-        <div class="card reveal">
-          <span class="card-tag">制作</span>
-          <p class="card-highlight">2週間に1本目安</p>
-          <p>1日1時間の作業を3日ほど続ければ完成するボリュームです。</p>
-        </div>
+      <div class="section-head reveal">
+        <p class="label">05</p>
+        <h2 class="section-title" id="persona-title">求める人物像</h2>
       </div>
+      <p class="section-lead reveal">最も重視するのは、主体性とやる気です。指示を待つのではなく、自分から動ける人を求めています。</p>
+      <ul class="criteria reveal">
+        <li>報告・連絡・相談が当たり前にできること</li>
+        <li>自分が担当したことに責任を持てること</li>
+        <li>MTGで発言する、編集ソフトを触ってみるといった最低限の努力を惜しまないこと</li>
+      </ul>
+      <p class="fineprint reveal">特別なスキルよりも、こうした姿勢を重視しています。学業やアルバイトとの両立は、個別に相談しながら調整しています。</p>
     </div>
   </section>
 
-  <!-- Support -->
-  <section class="section alt" id="support">
+  <!-- メンバーの声 — ダミーであることを明示 -->
+  <!-- 差し替え用プレースホルダー: 以下3件は仮のサンプルです。実際のコメントが用意でき次第、差し替えたうえで .dummy-notice を削除してください -->
+  <section class="section alt" id="voices" aria-labelledby="voices-title">
     <div class="wrap">
-      <p class="eyebrow reveal">06 — SUPPORT</p>
-      <h2 class="section-title reveal">未経験でも大丈夫な理由</h2>
-      <div class="section-body reveal">
-        <p>メンバーの多くは未経験からのスタートです。カメラの使い方も、編集ソフトの操作も、必要になったタイミングで教え合いながら進めています。</p>
-        <p>学業や既存のバイトとの両立についても、個別に相談しながら柔軟に対応しています。無理に合わせるのではなく、続けられるペースを一緒に探す、というスタンスです。</p>
+      <div class="section-head reveal">
+        <p class="label">06</p>
+        <h2 class="section-title" id="voices-title">メンバーの声</h2>
       </div>
-    </div>
-  </section>
-
-  <!-- Voices -->
-  <!-- 差し替え用プレースホルダー: 以下3件は仮のコメントです。実際のメンバーの声が用意でき次第、差し替えてください -->
-  <section class="section" id="voices">
-    <div class="wrap">
-      <p class="eyebrow reveal">07 — VOICE</p>
-      <h2 class="section-title reveal">メンバーの声</h2>
-      <div class="card-grid three">
-        <div class="card voice-card reveal">
-          <p>「編集は全くの未経験でしたが、最初の1本を出せた時の達成感は大きかったです。面接でも、この経験は具体的に話せています。」</p>
+      <p class="dummy-notice reveal" role="note">
+        <strong>※ サンプル（ダミーテキスト）です</strong>
+        以下のコメントは仮の内容です。実際のメンバーの声に差し替え予定です。
+      </p>
+      <ul class="voices reveal">
+        <li>
+          <p>編集は未経験でしたが、最初の1本を出せた時の達成感は大きかったです。面接でも具体的に話せています。</p>
           <span class="voice-attr">2年生</span>
-        </div>
-        <div class="card voice-card reveal">
-          <p>「バイトと両立できるか不安でしたが、撮影日程は毎回相談して決められるので、無理なく続けられています。」</p>
+        </li>
+        <li>
+          <p>バイトと両立できるか不安でしたが、撮影日程は毎回相談して決められるので続けられています。</p>
           <span class="voice-attr">3年生</span>
-        </div>
-        <div class="card voice-card reveal">
-          <p>「企画から公開まで関われるので、自分のアイデアが形になる感覚があります。」</p>
+        </li>
+        <li>
+          <p>企画から公開まで関われるので、自分のアイデアが形になる感覚があります。</p>
           <span class="voice-attr">1年生</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Persona -->
-  <section class="section alt" id="persona">
-    <div class="wrap">
-      <p class="eyebrow reveal">08 — PERSONA</p>
-      <h2 class="section-title reveal">こんな人を探しています</h2>
-
-      <div class="persona-block reveal">
-        <h3 class="persona-label">必須条件</h3>
-        <p>厚木キャンパスの学生であること。経験や実績は問いません。</p>
-      </div>
-
-      <div class="persona-block persona-highlight reveal">
-        <h3 class="persona-label">最も重視すること</h3>
-        <p>一番大事にしているのは、主体性とやる気です。指示を待つのではなく、自分から動ける人と一緒にやりたいと思っています。</p>
-      </div>
-
-      <div class="persona-block reveal">
-        <h3 class="persona-label">一緒に活動する上で大事にしていること</h3>
-        <ul class="check-list">
-          <li>報告・連絡・相談を当たり前にできること</li>
-          <li>自分が担当したことに責任を持てること</li>
-          <li>MTGで発言する、編集ソフトを触ってみるといった、最低限の努力を惜しまないこと</li>
-        </ul>
-        <p class="persona-note">特別なスキルよりも、こうした姿勢の方を重視しています。</p>
-      </div>
-
-      <div class="persona-block reveal">
-        <h3 class="persona-label">歓迎スキル（必須ではありません）</h3>
-        <div class="tag-list">
-          <span class="tag">カメラ</span>
-          <span class="tag">動画編集</span>
-          <span class="tag">出演（ダンス・歌・容姿など）</span>
-          <span class="tag">ディレクション</span>
-          <span class="tag">論理的思考力</span>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="section" id="faq">
+  <section class="section" id="faq" aria-labelledby="faq-title">
     <div class="wrap">
-      <p class="eyebrow reveal">09 — FAQ</p>
-      <h2 class="section-title reveal">よくある質問</h2>
-      <div class="faq-list">
-        <details class="faq-item reveal">
+      <div class="section-head reveal">
+        <p class="label">07</p>
+        <h2 class="section-title" id="faq-title">よくある質問</h2>
+      </div>
+      <div class="faq">
+        <details class="reveal">
           <summary>バイトや授業と両立できますか？</summary>
-          <p>多くのメンバーが両立しています。撮影日程やMTGの参加については、個別に相談しながら調整可能です。</p>
+          <p>多くのメンバーが両立しています。撮影日程やMTGの参加は、個別に相談しながら調整可能です。</p>
         </details>
-        <details class="faq-item reveal">
+        <details class="reveal">
           <summary>完全に未経験でも大丈夫ですか？</summary>
-          <p>問題ありません。現在活動しているメンバーの多くも未経験からのスタートです。</p>
+          <p>問題ありません。カメラも編集ソフトも、必要なタイミングで教え合いながら進めています。</p>
         </details>
-        <details class="faq-item reveal">
+        <details class="reveal">
           <summary>どんな学年のメンバーが多いですか？</summary>
-          <p>学年はさまざまです。学部や学年をまたいで活動しています。</p>
+          <p>学年はさまざまです。学部・学年をまたいで活動しています。</p>
         </details>
-        <details class="faq-item reveal">
+        <details class="reveal">
           <summary>エントリーすれば必ず参加できますか？</summary>
-          <p>定員の関係で、応募者全員を受け入れられるわけではありません。カジュアルな面談を通じて、お互いに合っているかを確認させてもらっています。</p>
+          <p>定員の関係で、応募者全員を受け入れられるわけではありません。カジュアル面談を通じて、お互いに合っているかを確認させてもらっています。</p>
+        </details>
+        <details class="reveal">
+          <summary>厚木キャンパス以外の学生でも応募できますか？</summary>
+          <p>活動場所の都合上、現在は厚木キャンパスの学生を対象としています。</p>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- Flow -->
-  <section class="section alt" id="flow">
-    <div class="wrap">
-      <p class="eyebrow reveal">10 — FLOW</p>
-      <h2 class="section-title reveal">応募の流れ</h2>
-      <div class="flow-list">
-        <div class="flow-item reveal">
-          <span class="flow-num">01</span>
-          <div>
-            <h3>エントリー</h3>
-            <p>ページ下部のボタンから応募してください。</p>
-          </div>
-        </div>
-        <div class="flow-item reveal">
-          <span class="flow-num">02</span>
-          <div>
-            <h3>カジュアル面談</h3>
-            <p>活動内容のすり合わせと、簡単な質問をさせてもらいます。</p>
-          </div>
-        </div>
-        <div class="flow-item reveal">
-          <span class="flow-num">03</span>
-          <div>
-            <h3>結果連絡</h3>
-            <p>数日以内に、活動への参加可否をお伝えします。</p>
-          </div>
-        </div>
+  <!-- 最終CTA -->
+  <section class="cta" aria-labelledby="cta-title">
+    <div class="wrap cta-inner">
+      <div>
+        <h2 class="cta-title" id="cta-title">エントリー受付中</h2>
+        <p class="cta-sub">定員に達し次第、予告なく締め切ります。</p>
       </div>
-      <p class="flow-note reveal">※ 定員の都合上、応募者全員が参加できるわけではないことをご了承ください。</p>
-    </div>
-  </section>
-
-  <!-- Final CTA -->
-  <section class="section cta-final" id="entry">
-    <div class="wrap">
-      <p class="eyebrow reveal">ENTRY</p>
-      <h2 class="cta-title reveal">定員に達し次第、募集を締め切ります</h2>
-      <p class="cta-body reveal">予告なく応募を締め切ることがあります。興味があれば、早めのエントリーをおすすめします。</p>
-      <a href="#" class="btn btn-primary btn-large reveal">エントリーはこちら</a>
+      <!-- TODO: href="#" を実際の応募フォームのURLに差し替えてください -->
+      <a href="#" class="btn btn-invert">エントリーフォームへ</a>
     </div>
   </section>
 
@@ -274,7 +314,7 @@
 
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <p>厚木キャンパス SNS広報プロジェクト</p>
+    <p>東京工芸大学 SNSプロジェクト（厚木キャンパス）</p>
     <p class="footer-copy">&copy; 2026</p>
   </div>
 </footer>

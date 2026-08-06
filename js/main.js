@@ -10,6 +10,32 @@ const onScroll = () => {
 window.addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
+// Theme toggle (light / dark), persisted in localStorage
+const root = document.documentElement;
+const themeToggle = document.getElementById('themeToggle');
+const STORAGE_KEY = 'sns-project-theme';
+
+const systemPrefersDark = () =>
+  window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+const applyTheme = (theme) => {
+  root.setAttribute('data-theme', theme);
+  themeToggle.setAttribute('aria-pressed', String(theme === 'light'));
+  themeToggle.setAttribute(
+    'aria-label',
+    theme === 'dark' ? 'ライトモードに切り替え' : 'ダークモードに切り替え'
+  );
+};
+
+const storedTheme = localStorage.getItem(STORAGE_KEY);
+applyTheme(storedTheme || (systemPrefersDark() ? 'dark' : 'light'));
+
+themeToggle.addEventListener('click', () => {
+  const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  applyTheme(next);
+  localStorage.setItem(STORAGE_KEY, next);
+});
+
 // Reveal-on-scroll
 const revealEls = document.querySelectorAll('.reveal');
 
