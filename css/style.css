@@ -265,17 +265,31 @@ img { max-width: 100%; display: block; }
   isolation: isolate;
   display: flex;
   align-items: flex-end;
-  min-height: min(700px, 86vh);
-  padding: calc(var(--header-h) + var(--s6)) 0 var(--s6);
+  min-height: min(700px, 76vh);
+  padding: calc(var(--header-h) + var(--s5)) 0 var(--s5);
   overflow: hidden;
 }
+/* ヒーローだけは他3枚と処理を変えている。理由:
+   この写真は輝度ではなく彩度でできており（平均輝度0.02）、グレースケール化すると
+   ほぼ真っ黒になって何も見えない。明るく持ち上げると暗部に階調が無いため
+   バンディングが出る（実測: exp=45で隣接画素の最大段差51／255）。
+   そこで彩度を残し、輝度をいじらない。元がネイビーなので、
+   アクセント(207°)と同系色であり、色相の統一という目的は達成できる。 */
 .hero__media {
   position: absolute;
   inset: 0;
   z-index: -1;
-  /* 元画像は輝度が極端に低いため、Unsplash側で露出+75した素材を使い、
-     ここでは 2.6 倍に留める。処理後の平均輝度は他3枚と同じ 0.30 前後 */
-  --img-b: 2.6;
+}
+.hero__media img { filter: saturate(0.85) contrast(1.02); }
+.hero__media::after { opacity: 0.30; }
+/* 元画像が既に暗いので、共通の暗幕をそのまま使うと写真が完全に消える。
+   テキストが乗る下半分だけを濃くする */
+.hero__media.media--scrim::before {
+  background: linear-gradient(180deg,
+    rgba(14,14,16,0.10) 0%,
+    rgba(14,14,16,0.30) 35%,
+    rgba(14,14,16,0.72) 70%,
+    rgba(14,14,16,0.90) 100%);
 }
 .hero__inner { position: relative; }
 
@@ -328,7 +342,7 @@ img { max-width: 100%; display: block; }
 /* ==========================================================================
    セクション共通
    ========================================================================== */
-.section { padding: clamp(48px, 7vw, 80px) 0; }
+.section { padding: clamp(36px, 7vw, 80px) 0; }
 .section + .section { border-top: 1px solid var(--line); }
 
 .section-head {
@@ -411,7 +425,7 @@ img { max-width: 100%; display: block; }
 
 .bleed-right { display: grid; gap: var(--s6); }
 .bleed-right__text { padding-inline: var(--pad); max-width: var(--wrap); margin-inline: auto; width: 100%; }
-.bleed-right__media { height: clamp(280px, 60vw, 420px); --img-b: 0.82; }
+.bleed-right__media { height: clamp(190px, 50vw, 420px); --img-b: 0.82; }
 
 @media (min-width: 900px) {
   .bleed-right {
@@ -440,9 +454,11 @@ img { max-width: 100%; display: block; }
 .step-n { font-size: 0.6875rem; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; letter-spacing: 0.06em; }
 .step-t { font-size: 1rem; font-weight: 700; }
 .step-d { font-size: 0.875rem; color: var(--muted); line-height: 1.7; }
-@media (max-width: 439px) {
-  .steps li { grid-template-columns: 34px 1fr; row-gap: 2px; }
-  .step-d { grid-column: 2; }
+/* 狭い画面でも1工程=1行に収める。2行に折ると5工程で130px余分に食う */
+@media (max-width: 767px) {
+  .steps li { grid-template-columns: 26px 56px 1fr; gap: var(--s2); }
+  .step-t { font-size: 0.9375rem; }
+  .step-d { font-size: 0.8125rem; }
 }
 
 /* ==========================================================================
@@ -453,7 +469,10 @@ img { max-width: 100%; display: block; }
   .workload-grid { grid-template-columns: 1fr 260px; gap: var(--s7); }
 }
 .workload-square { aspect-ratio: 1 / 1; --img-b: 0.52; }
-@media (max-width: 899px) { .workload-square { max-width: 200px; } }
+/* 狭い画面では正方形をやめ、横帯に切り替える。写真は残しつつ縦を200px→96pxに */
+@media (max-width: 899px) {
+  .workload-square { aspect-ratio: auto; height: 96px; width: 100%; }
+}
 
 .load-table { width: 100%; border-collapse: collapse; text-align: left; }
 .load-table th, .load-table td {
@@ -477,16 +496,21 @@ img { max-width: 100%; display: block; }
   .load-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
   .load-table tbody tr { display: block; padding: var(--s3) 0; border-bottom: 1px solid var(--line); }
   .load-table tbody tr:first-child { border-top: 1px solid var(--line-strong); }
+  /* grid にすると、セル内の要素と地の文（例:「月1回」+「程度」）が
+     別セル扱いになって改行するため、ラベルを絶対配置にして本文は通常の行として流す */
   .load-table tbody th, .load-table tbody td {
-    display: grid;
-    grid-template-columns: 64px 1fr;
-    gap: var(--s2);
-    padding: 2px 0;
+    display: block;
+    position: relative;
+    padding: 2px 0 2px 72px;
     border-bottom: 0;
     white-space: normal;
   }
   .load-table tbody th::before, .load-table tbody td::before {
     content: attr(data-label);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 64px;
     font-size: 0.75rem;
     font-weight: 400;
     color: var(--muted);
@@ -497,8 +521,9 @@ img { max-width: 100%; display: block; }
 /* 表から計算した月あたりの目安 */
 .totals { margin-top: var(--s5); padding-top: var(--s4); border-top: 1px solid var(--line); }
 .totals-label { font-size: 0.8125rem; color: var(--muted); margin-bottom: var(--s3); }
-.totals-grid { display: grid; gap: var(--s4); }
-@media (min-width: 600px) { .totals-grid { grid-template-columns: repeat(3, 1fr); } }
+/* モバイルでも3列。縦積みにすると数値3つで368pxを食うため */
+.totals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s3); }
+@media (min-width: 600px) { .totals-grid { gap: var(--s4); } }
 .total dt { font-size: 0.8125rem; color: var(--muted); }
 .total dd {
   display: flex;
@@ -652,3 +677,41 @@ img { max-width: 100%; display: block; }
 .footer-alias { margin-top: var(--s1); }
 .footer-desc { margin-top: var(--s2); max-width: 56ch; color: var(--muted); font-size: 0.8125rem; line-height: 1.8; }
 .footer-copy { color: var(--muted); font-size: 0.8125rem; font-variant-numeric: tabular-nums; flex-shrink: 0; }
+
+/* ==========================================================================
+   モバイルの縦方向の圧縮
+   情報は隠さず・減らさず、余白とレイアウトの冗長分だけを詰める。
+   稼働の目安の表は、応募判断の中核なので折りたたまず常に開いたままにする。
+   ========================================================================== */
+@media (max-width: 767px) {
+  .section-head { margin-bottom: var(--s4); gap: var(--s3); }
+  .bignum { font-size: 2.25rem; }
+  .section-lead { margin-bottom: var(--s4); }
+  .statrow { padding: 12px 0; }
+  .steps li { padding: 12px 0; }
+  .block + .block { margin-top: var(--s4); }
+  .fineprint { margin-top: var(--s3); }
+
+  .hero-lead { margin-top: var(--s3); }
+  .hero-meta { margin-top: var(--s3); padding-top: var(--s3); }
+  .hero-actions { margin-top: var(--s4); gap: var(--s2); }
+  .hero-actions .btn { padding-block: 12px; }
+
+  .workload-grid { gap: var(--s4); }
+  .totals { margin-top: var(--s4); padding-top: var(--s3); }
+  .totals-note { margin-top: var(--s2); }
+  .inline-cta { margin-top: var(--s4); padding-top: var(--s3); gap: var(--s2); }
+
+  .band { min-height: 0; padding: var(--s5) 0; }
+  .band-list { gap: var(--s2); }
+  .band-note { margin-top: var(--s3); }
+
+  .apply-cols { gap: var(--s5); }
+  .flow { gap: var(--s3); }
+
+  .slab-lead { margin-bottom: var(--s3); }
+  .slab-grid { gap: var(--s5); }
+
+  .site-footer { padding: var(--s5) 0; }
+  .footer-desc { margin-top: var(--s1); }
+}

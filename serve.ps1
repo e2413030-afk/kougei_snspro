@@ -31,6 +31,9 @@ while ($listener.IsListening) {
     if (-not $contentType) { $contentType = "application/octet-stream" }
     $bytes = [System.IO.File]::ReadAllBytes($filePath)
     $response.ContentType = $contentType
+    # 開発用サーバなのでキャッシュさせない。
+    # これが無いと CSS/JS を編集してもブラウザが古い版を使い続ける
+    $response.Headers.Add("Cache-Control", "no-store, must-revalidate")
     $response.ContentLength64 = $bytes.Length
     $response.OutputStream.Write($bytes, 0, $bytes.Length)
   } else {
