@@ -124,4 +124,7 @@ WebP / JPEG の両形式は Unsplash の CDN（imgix）から `?fm=webp` `?fm=jp
 
 ## デプロイ
 
+- 本番URL: <https://kougei-snspro.vercel.app>
+- GitHub: <https://github.com/e2413030-afk/kougei_snspro>
+
 Vercel が GitHub リポジトリと連携済みのため、`main` ブランチへ push すると自動的に再デプロイされます。
