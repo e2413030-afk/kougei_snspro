@@ -123,7 +123,6 @@ img { max-width: 100%; display: block; }
   font-size: 0.9375rem;
   line-height: 1.7;
 }
-.slab .todo { border-color: rgba(14, 14, 16, 0.35); color: var(--accent-ink); }
 
 /* ==========================================================================
    極細の罫線グリッド
@@ -426,13 +425,13 @@ img { max-width: 100%; display: block; }
 }
 .statrow dt { font-size: 0.875rem; color: var(--muted); }
 .statrow dd { font-size: 1rem; line-height: 1.75; }
-.statnote { display: block; margin-top: var(--s1); font-size: 0.8125rem; color: var(--muted); line-height: 1.8; }
 
 .statlist--on-accent { border-top-color: rgba(14, 14, 16, 0.22); }
 .statlist--on-accent .statrow { border-bottom-color: rgba(14, 14, 16, 0.22); }
 .statlist--on-accent dt { color: var(--on-accent-2); }
 .statlist--on-accent dd { color: var(--accent-ink); }
-.statlist--on-accent .statnote { color: var(--on-accent-2); }
+/* 電話番号のリンクは地の文と同色なので、リンクだと分かるよう下線だけ足す */
+.statlist--on-accent dd a { text-decoration: underline; text-underline-offset: 2px; }
 
 /* ==========================================================================
    02 活動内容 — 非対称2カラム。写真の右端をセクション境界からはみ出させる
@@ -619,19 +618,6 @@ img { max-width: 100%; display: block; }
    ========================================================================== */
 .apply-cols { display: grid; gap: var(--s7); }
 @media (min-width: 900px) { .apply-cols { grid-template-columns: 1fr 1fr; gap: var(--s8); } }
-
-.criteria { display: grid; gap: var(--s2); }
-.criteria li { position: relative; padding-left: 24px; color: var(--ink-2); font-size: 0.9375rem; line-height: 1.85; }
-.criteria li::before {
-  content: "";
-  position: absolute;
-  left: 2px;
-  top: 0.74em;
-  width: 9px; height: 5px;
-  border-left: 1.5px solid var(--muted);
-  border-bottom: 1.5px solid var(--muted);
-  transform: rotate(-45deg);
-}
 
 .chips { display: flex; flex-wrap: wrap; gap: var(--s2); }
 .chips li {
