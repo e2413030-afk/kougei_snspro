@@ -215,15 +215,15 @@
         <dl class="totals-grid">
           <div class="total">
             <dt>ミーティング</dt>
-            <dd><span class="count" data-count-to="4">4</span><span class="unit">時間</span></dd>
+            <dd><span class="figure">4</span><span class="unit">時間</span></dd>
           </div>
           <div class="total">
             <dt>制作</dt>
-            <dd><span class="count" data-count-to="6">6</span><span class="unit">時間前後</span></dd>
+            <dd><span class="figure">6</span><span class="unit">時間前後</span></dd>
           </div>
           <div class="total">
             <dt>公開する本数</dt>
-            <dd><span class="count" data-count-to="2">2</span><span class="unit">本</span></dd>
+            <dd><span class="figure">2</span><span class="unit">本</span></dd>
           </div>
         </dl>
         <p class="totals-note">撮影の所要時間は内容によって変わるため、この合計には含めていません。</p>
@@ -243,8 +243,9 @@
     </div>
   </section>
 
-  <!-- 区切りバンド — 番号は振らない。息継ぎとして機能させる -->
-  <section class="band" id="gains" aria-labelledby="gains-title">
+  <!-- 区切りバンド — 情報は載せない。写真と1行だけの休符として機能させる。
+       「参加して得られるもの」は 04 の末尾へ移した -->
+  <div class="band">
     <picture class="band__media media media--scrim" aria-hidden="true">
       <source type="image/webp"
               srcset="assets/img/band-1200.webp 1200w, assets/img/band-2400.webp 2400w"
@@ -254,16 +255,10 @@
            sizes="100vw" width="2400" height="750" alt="" loading="lazy" decoding="async">
     </picture>
 
-    <div class="wrap band__inner reveal">
-      <h2 class="band-title" id="gains-title">参加して得られるもの</h2>
-      <ul class="band-list">
-        <li><strong>制作スキル</strong>撮影と編集を、公開する前提で覚えられます。</li>
-        <li><strong>チームで進める経験</strong>締切のある制作を、複数人で分担して動かします。</li>
-        <li><strong>運用の視点</strong>出した結果を見て、次に何を変えるかを考えます。</li>
-      </ul>
-      <p class="band-note">本気で取り組めば、そのぶん具体的に話せる経験が残ります。結果として、就職活動で語れる材料にもなります。</p>
+    <div class="wrap">
+      <p class="band__line reveal">未経験から始めて、公開まで自分で通す。それが毎月2本ずつ積み上がっていきます。</p>
     </div>
-  </section>
+  </div>
 
   <!-- 04 応募について -->
   <section class="section" id="apply" aria-labelledby="apply-title">
@@ -361,6 +356,17 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- 区切りバンドから移設。応募条件を読み終えた位置に置く -->
+      <div class="apply-tail reveal" id="gains">
+        <h3 class="sub-title">参加して得られるもの</h3>
+        <ul class="gains-list">
+          <li><strong>制作スキル</strong>撮影と編集を、公開する前提で覚えられます。</li>
+          <li><strong>チームで進める経験</strong>締切のある制作を、複数人で分担して動かします。</li>
+          <li><strong>運用の視点</strong>出した結果を見て、次に何を変えるかを考えます。</li>
+        </ul>
+        <p class="fineprint">本気で取り組めば、そのぶん具体的に話せる経験が残ります。結果として、就職活動で語れる材料にもなります。</p>
       </div>
 
     </div>

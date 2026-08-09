@@ -6,3 +6,4 @@ node_modules/
 
 # 開発用の検証ページ。本番には含めない
 _compare.html
+_shot.html

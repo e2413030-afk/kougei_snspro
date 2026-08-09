@@ -127,22 +127,39 @@ img { max-width: 100%; display: block; }
 
 /* ==========================================================================
    極細の罫線グリッド
+
+   以前は本文列を4分割していたが、縦罫が定義リストの値の途中を横切り、
+   装飾として読まれる前に「線がある」というノイズとして先に認識されていた。
+   本文の上には引かず、コンテンツ列の外側（左右の余白）だけに置く。
+   余白が取れない幅では出さない = モバイルでは非表示。
+   本数が減るぶん、1本あたりは少し濃くしている。
    ========================================================================== */
 .gridlines {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  max-width: var(--wrap);
-  margin-inline: auto;
-  padding-inline: var(--pad);
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: none;
 }
-.gridlines span { border-left: 1px solid var(--grid); }
-.gridlines span:last-child { border-right: 1px solid var(--grid); }
-@media (max-width: 599px) {
-  .gridlines { grid-template-columns: repeat(2, 1fr); }
+.gridlines span {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid var(--grid);
+}
+/* 本文列の左右の境界 */
+.gridlines span:nth-child(1) { left: calc(50% - var(--wrap) / 2); }
+.gridlines span:nth-child(2) { left: calc(50% + var(--wrap) / 2); }
+/* さらに外側の1対。余白が広い画面でのみ出す */
+.gridlines span:nth-child(3),
+.gridlines span:nth-child(4) { display: none; }
+.gridlines span:nth-child(3) { left: calc(50% - var(--wrap) / 2 - 96px); }
+.gridlines span:nth-child(4) { left: calc(50% + var(--wrap) / 2 + 96px); }
+
+@media (min-width: 1180px) { .gridlines { display: block; } }
+@media (min-width: 1400px) {
+  .gridlines span:nth-child(3),
+  .gridlines span:nth-child(4) { display: block; }
 }
 
 /* ==========================================================================
@@ -182,7 +199,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* ==========================================================================
-   フェードイン（動きはこれとカウントアップのみ）
+   フェードイン（ページ内の動きはこれだけ）
    JS無効時に本文が消えないよう html.js 配下に限定する
    ========================================================================== */
 .js .reveal {
@@ -534,7 +551,10 @@ img { max-width: 100%; display: block; }
   font-weight: 700;
   letter-spacing: -0.02em;
 }
-.count { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.1; font-variant-numeric: tabular-nums; }
+/* カウントアップは廃止した。4・6・2 という一桁の数字が0.9秒かけて増えても、
+   視認できるのは「0→数字」の一瞬だけで、演出として成立していなかった。
+   数値を大きく組むこと自体は情報として正しいので、組みだけ残す */
+.figure { font-size: clamp(2rem, 4vw, 2.75rem); line-height: 1.1; font-variant-numeric: tabular-nums; }
 .unit { font-size: 0.9375rem; }
 .totals-note { margin-top: var(--s3); font-size: 0.8125rem; color: var(--muted); }
 
@@ -555,24 +575,44 @@ img { max-width: 100%; display: block; }
 
 /* ==========================================================================
    区切りバンド
+
+   以前は「参加して得られるもの」3項目＋注記を重ねていたが、
+   休符にも情報にもなりきらず、モバイルでは普通のセクションに見えていた。
+   写真と1行だけにして、息継ぎに徹させる。3項目は 04 の末尾へ移した。
    ========================================================================== */
 .band {
   position: relative;
   isolation: isolate;
   display: flex;
   align-items: center;
-  min-height: 260px;
+  min-height: 240px;
   padding: var(--s6) 0;
   overflow: hidden;
 }
 .band__media { position: absolute; inset: 0; z-index: -1; --img-b: 0.64; }
-.band__inner { position: relative; }
-.band-title { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.08em; color: var(--ink-2); margin-bottom: var(--s3); }
-.band-list { display: grid; gap: var(--s3); }
-@media (min-width: 760px) { .band-list { grid-template-columns: repeat(3, 1fr); gap: var(--s5); } }
-.band-list li { color: var(--ink-2); font-size: 0.875rem; line-height: 1.8; }
-.band-list strong { display: block; color: var(--ink); font-size: 1rem; font-weight: 700; }
-.band-note { margin-top: var(--s4); color: var(--muted); font-size: 0.8125rem; max-width: 64ch; }
+/* .wrap の内側に置く。.wrap 自体に max-width を掛けると
+   margin-inline:auto で中央寄りになり、他セクションの左端と揃わなくなる */
+.band .wrap { position: relative; }
+.band__line {
+  max-width: 30ch;
+  color: var(--ink);
+  font-size: clamp(1.0625rem, 2.4vw, 1.625rem);
+  font-weight: 700;
+  line-height: 1.7;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* 04 末尾に移した「参加して得られるもの」 */
+.apply-tail {
+  margin-top: var(--s7);
+  padding-top: var(--s6);
+  border-top: 1px solid var(--line);
+}
+.gains-list { display: grid; gap: var(--s3); }
+@media (min-width: 760px) { .gains-list { grid-template-columns: repeat(3, 1fr); gap: var(--s5); } }
+.gains-list li { color: var(--ink-2); font-size: 0.875rem; line-height: 1.8; }
+.gains-list strong { display: block; color: var(--ink); font-size: 1rem; font-weight: 700; }
 
 /* ==========================================================================
    04 応募について
@@ -703,10 +743,14 @@ img { max-width: 100%; display: block; }
   .inline-cta { margin-top: var(--s4); padding-top: var(--s3); gap: var(--s2); }
 
   .band { min-height: 0; padding: var(--s5) 0; }
-  .band-list { gap: var(--s2); }
-  .band-note { margin-top: var(--s3); }
 
   .apply-cols { gap: var(--s5); }
+  .apply-tail { margin-top: var(--s4); padding-top: var(--s3); }
+  /* 見出しを別行に立てると3項目で3行ぶん余計に食う。狭い画面では行内に畳む */
+  .gains-list { gap: var(--s2); }
+  .gains-list li { line-height: 1.75; }
+  .gains-list strong { display: inline; font-size: 0.9375rem; }
+  .gains-list strong::after { content: "："; font-weight: 400; color: var(--muted); }
   .flow { gap: var(--s3); }
 
   .slab-lead { margin-bottom: var(--s3); }
