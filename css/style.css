@@ -1,5 +1,5 @@
 /* ==========================================================================
-   東京工芸大学 厚木キャンパス 学生SNSプロジェクト — メンバー募集LP
+   東京工芸大学 工学部 SNS広報部 — メンバー募集LP
 
    ダーク1テーマ。ベースは純黒を避けた #0E0E10。
    アクセントは #4E9DE0 の1色のみ。写真のネイビーと色相を揃えたアズールで、
@@ -113,17 +113,6 @@ img { max-width: 100%; display: block; }
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
-
-.todo {
-  display: inline-block;
-  border: 1px dashed var(--line-strong);
-  border-radius: var(--r);
-  padding: 2px 10px;
-  color: var(--ink-2);
-  font-size: 0.9375rem;
-  line-height: 1.7;
-}
-.slab .todo { border-color: rgba(14, 14, 16, 0.35); color: var(--accent-ink); }
 
 /* ==========================================================================
    極細の罫線グリッド
@@ -426,13 +415,13 @@ img { max-width: 100%; display: block; }
 }
 .statrow dt { font-size: 0.875rem; color: var(--muted); }
 .statrow dd { font-size: 1rem; line-height: 1.75; }
-.statnote { display: block; margin-top: var(--s1); font-size: 0.8125rem; color: var(--muted); line-height: 1.8; }
 
 .statlist--on-accent { border-top-color: rgba(14, 14, 16, 0.22); }
 .statlist--on-accent .statrow { border-bottom-color: rgba(14, 14, 16, 0.22); }
 .statlist--on-accent dt { color: var(--on-accent-2); }
 .statlist--on-accent dd { color: var(--accent-ink); }
-.statlist--on-accent .statnote { color: var(--on-accent-2); }
+/* 電話番号のリンクは地の文と同色なので、リンクだと分かるよう下線だけ足す */
+.statlist--on-accent dd a { text-decoration: underline; text-underline-offset: 2px; }
 
 /* ==========================================================================
    02 活動内容 — 非対称2カラム。写真の右端をセクション境界からはみ出させる
@@ -701,9 +690,13 @@ img { max-width: 100%; display: block; }
   .footer-inner { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: var(--s4); }
 }
 .footer-name { font-size: 0.875rem; font-weight: 700; line-height: 1.7; }
-.footer-alias { margin-top: var(--s1); }
 .footer-desc { margin-top: var(--s2); max-width: 56ch; color: var(--muted); font-size: 0.8125rem; line-height: 1.8; }
-.footer-copy { color: var(--muted); font-size: 0.8125rem; font-variant-numeric: tabular-nums; flex-shrink: 0; }
+/* 制作クレジットとコピーライトを縦に並べ、右端で揃える */
+.footer-meta { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s1); flex-shrink: 0; }
+@media (min-width: 700px) { .footer-meta { align-items: flex-end; } }
+.footer-credit,
+.footer-copy { color: var(--muted); font-size: 0.8125rem; }
+.footer-copy { font-variant-numeric: tabular-nums; }
 
 /* ==========================================================================
    モバイルの縦方向の圧縮
